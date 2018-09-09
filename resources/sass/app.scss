@@ -3,12 +3,96 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import "functions";
+@import "variables";
+@import "mixins";
+// @import "root";
+// @import "reboot";
+// @import "type";
+// @import "images";
+// @import "code";
+// @import "grid";
+// @import "tables";
+// @import "forms";
+// @import "buttons";
+// @import "transitions";
+// @import "dropdown";
+// @import "button-group";
+// @import "input-group";
+// @import "custom-forms";
+// @import "nav";
+// @import "navbar";
+// @import "card";
+// @import "breadcrumb";
+// @import "pagination";
+// @import "badge";
+// @import "jumbotron";
+// @import "alert";
+// @import "progress";
+// @import "media";
+// @import "list-group";
+// @import "close";
+// @import "modal";
+// @import "tooltip";
+// @import "popover";
+// @import "carousel";
+// @import "utilities";
+// @import "print";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include gradient-directional($teal, $purple, -45deg);
+
+  // &.content {
+  // 	position: relative;
+  // 	// display: grid;
+  // 	justify-content: center;
+  // 	align-items: center;
+  // 	align-content: center;
+  // 	margin: 0 auto;
+  // 	min-height: 100vh;
+  // }
+  //
+  // .scene {
+  // 	position: absolute;
+  //
+  //   &.scene--full {
+  //   	width: 100%;
+  //   	height: 100vh;
+  //   }
+  // }
+
+  .content__inner {
+  	grid-area: 1 / 1 / 1 / 1;
+  	position: relative;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+  	align-content: center;
+
+    > #anim {
+      height: 30vh;
+    }
+
+
+  }
+
+  #mail {
+    position: fixed;
+    bottom: $spacer;
+    color: $white;
+  }
+}
+
+#scene {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 }

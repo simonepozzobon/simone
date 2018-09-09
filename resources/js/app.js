@@ -1,22 +1,40 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-require('./bootstrap');
-
-window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import Vue from 'vue'
+import axios from 'axios'
+import lottie from 'lottie-web'
+require('./data/demo3')
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: function() {
+        return {
+            anim: {},
+            data: null,
+            loaded: false,
+            speed: 0.5,
+        }
+    },
+    methods: {
+        getData: function() {
+            axios.get('/js/data.json').then(response => {
+                this.data = response.data
+                this.init()
+            })
+        },
+        init: function() {
+            this.anim = lottie.loadAnimation({
+                container: this.$refs.anim,
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                animationData: this.data,
+                name: 'DnaDataData',
+                rendererSettings: {}
+            })
+            this.anim.setSpeed(this.speed)
+            this.anim.play()
+        }
+    },
+    mounted: function() {
+        this.getData()
+    }
 });
